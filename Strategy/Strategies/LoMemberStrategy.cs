@@ -1,14 +1,21 @@
-﻿namespace Strategy.Strategies;
+﻿using Strategy.Rules;
+
+namespace Strategy.Strategies;
 
 public class LoMemberStrategy : IStrategy
 {
+
+    public string GetKey()
+    {
+        return "lo-member";
+    }
 
     public bool AppliesTo(Policy policy)
     {
         return policy.Memberships.Contains("LO");
     }
 
-    public List<StrategyLogEntry> Apply(Policy policy, Controles controls)
+    public List<StrategyLogEntry> ApplyTo(Policy policy, Controles controls)
     {
         var log = new List<StrategyLogEntry>();
         if (policy.Age > 60)
@@ -21,7 +28,14 @@ public class LoMemberStrategy : IStrategy
             log.Add(new StrategyLogEntry { Message = "Holder is younger than 60 years, no discount applied", Type = Type.Message });
 
         }
+        
+        var rules = new List<IRule> { new Rule1(), new Rule2() };
 
+        foreach (var rule in rules)
+        {
+            rule.ApplyTo(policy);
+        }
+        
         return log;
 
     }

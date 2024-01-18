@@ -19,7 +19,7 @@ public class PolicyRuleEngine
                 SkipToEnd = () => throw new NotImplementedException(),
             }; 
             
-            var result = strategy.Apply(policy, controls);
+            var result = strategy.ApplyTo(policy, controls);
              log.AddRange(result);
             
         }
