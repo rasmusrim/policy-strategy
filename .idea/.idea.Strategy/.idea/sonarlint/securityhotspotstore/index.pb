@@ -21,3 +21,5 @@ G
 Strategy/Rules/Rule1.cs,a\7\a7984c5a1bc27deedd81a5e5c72714c8e722f1e3
 G
 Strategy/Rules/Rule2.cs,1\9\193e8dbae8762a25120aef706889a53e9f3d0a6c
+`
+0Strategy/Strategies/GeneralLaborUnionStrategy.cs,a\8\a8d18335a9443d7c69cb6f73cc69d4247754bc95

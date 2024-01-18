@@ -2,9 +2,21 @@
 
 public class StrategyFactory
 {
-    static public List<IStrategy> GetStrategiesApplicableTo(Policy policy)
+    static public IStrategy GetStrategyFor(Policy policy)
     {
-        return GetAll().Where(strategy => strategy.AppliesTo(policy)).ToList();
+        var strategies = GetAll().Where(strategy => strategy.AppliesTo(policy)).ToList();
+
+        if (strategies.Count == 0)
+        {
+            throw new InvalidDataException("No strategy found for policy " + policy.Id);
+        }
+
+        if (strategies.Count > 1)
+        {
+            throw new InvalidDataException("Multiple strategy found for policy " + policy.Id);
+        }
+
+        return strategies.Single();
     }
 
     static private List<IStrategy> GetAll()

@@ -1,4 +1,5 @@
-﻿using Strategy.Rules;
+﻿using System.Numerics;
+using Strategy.Rules;
 
 namespace Strategy.Strategies;
 
@@ -15,7 +16,7 @@ public class LoMemberStrategy : IStrategy
         return policy.Memberships.Contains("LO");
     }
 
-    public List<StrategyLogEntry> ApplyTo(Policy policy, Controles controls)
+    public List<StrategyLogEntry> ApplyTo(Policy policy)
     {
         var log = new List<StrategyLogEntry>();
         if (policy.Age > 60)
@@ -36,7 +37,9 @@ public class LoMemberStrategy : IStrategy
             var ruleLogs = rule.ApplyTo(policy);
             log.AddRange(ruleLogs);
         }
-        
+
+        log.AddRange(new GeneralLaborUnionStrategy().ApplyTo(policy));
+
         return log;
 
     }
