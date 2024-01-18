@@ -33,7 +33,8 @@ public class LoMemberStrategy : IStrategy
 
         foreach (var rule in rules)
         {
-            rule.ApplyTo(policy);
+            var ruleLogs = rule.ApplyTo(policy);
+            log.AddRange(ruleLogs);
         }
         
         return log;
