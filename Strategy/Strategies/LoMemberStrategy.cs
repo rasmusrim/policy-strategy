@@ -5,7 +5,6 @@ namespace Strategy.Strategies;
 
 public class LoMemberStrategy : IStrategy
 {
-
     public string GetKey()
     {
         return "lo-member";
@@ -22,14 +21,27 @@ public class LoMemberStrategy : IStrategy
         if (policy.Age > 60)
         {
             policy.InterestRate *= 0.9f;
-            log.Add(new StrategyLogEntry { Message = "Holder is older than 60 years, applying 10% discount", Type = Type.Message });
+            log.Add(
+                new StrategyLogEntry
+                {
+                    RuleId = GetKey(),
+                    Message = "Holder is older than 60 years, applying 10% discount",
+                    Type = Type.Message
+                }
+            );
         }
         else
         {
-            log.Add(new StrategyLogEntry { Message = "Holder is younger than 60 years, no discount applied", Type = Type.Message });
-
+            log.Add(
+                new StrategyLogEntry
+                {
+                    RuleId = GetKey(),
+                    Message = "Holder is younger than 60 years, no discount applied",
+                    Type = Type.Message
+                }
+            );
         }
-        
+
         var rules = new List<IRule> { new Rule1(), new Rule2() };
 
         foreach (var rule in rules)
@@ -38,10 +50,9 @@ public class LoMemberStrategy : IStrategy
             log.AddRange(ruleLogs);
         }
 
+        // Handover control to different strategy.
         log.AddRange(new GeneralLaborUnionStrategy().ApplyTo(policy));
 
         return log;
-
     }
-
 }

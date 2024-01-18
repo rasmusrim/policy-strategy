@@ -24,4 +24,3 @@ public class StrategyFactory
         return new List<IStrategy> { new LoMemberStrategy() };
     }
 }
-

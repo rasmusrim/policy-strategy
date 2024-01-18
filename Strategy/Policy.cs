@@ -6,5 +6,5 @@ public class Policy
     public int Age { get; set; }
     public float InterestRate { get; set; }
     public bool ShouldSendReportToLaborUnion { get; set; } = false;
-    public int Id { get; set; }
+    public required int Id { get; set; }
 }

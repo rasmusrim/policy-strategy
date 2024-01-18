@@ -5,7 +5,6 @@ namespace Strategy.Rules;
 
 public class Rule2 : IRule
 {
-
     public string GetKey()
     {
         return "rule2";
@@ -19,7 +18,9 @@ public class Rule2 : IRule
         {
             new StrategyLogEntry
             {
-                Message = "Carried out rule " + GetKey(), Type = Type.Message
+                RuleId = GetKey(),
+                Message = "Carried out rule " + GetKey(),
+                Type = Type.Message
             }
         };
     }

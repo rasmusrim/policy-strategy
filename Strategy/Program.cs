@@ -4,6 +4,7 @@ using Strategy;
 
 var policy = new Policy
 {
+    Id = 654623,
     Age = 18,
     InterestRate = 0.05f,
     Memberships = new List<string> { "LO" }

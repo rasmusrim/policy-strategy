@@ -7,9 +7,7 @@ public class PolicyRuleEngine
     public List<StrategyLogEntry> ParsePolicy(Policy policy)
     {
         var strategy = StrategyFactory.GetStrategyFor(policy);
-        
+
         return strategy.ApplyTo(policy);
-
     }
-
 }

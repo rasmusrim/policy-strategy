@@ -2,8 +2,6 @@
 
 public class GeneralLaborUnionStrategy : IStrategy
 {
-
-
     public string GetKey()
     {
         return "general-labor-union";
@@ -17,6 +15,14 @@ public class GeneralLaborUnionStrategy : IStrategy
     public List<StrategyLogEntry> ApplyTo(Policy policy)
     {
         policy.ShouldSendReportToLaborUnion = true;
-        return new List<StrategyLogEntry> { new StrategyLogEntry { Type = Type.Message, Message = "Set should send report to labor union to true." } };
+        return new List<StrategyLogEntry>
+        {
+            new StrategyLogEntry
+            {
+                RuleId = GetKey(),
+                Type = Type.Message,
+                Message = "Set should send report to labor union to true."
+            }
+        };
     }
 }

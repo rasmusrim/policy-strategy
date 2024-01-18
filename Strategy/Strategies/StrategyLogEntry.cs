@@ -2,7 +2,8 @@
 
 public class StrategyLogEntry
 {
-    public string Message { get; set; }
+    public required string RuleId { get; set; }
+    public required string Message { get; set; }
     public Type Type { get; set; }
 }
 
